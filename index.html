@@ -25,15 +25,17 @@
       margin: 0;
       color: #dfe6f1;
     }
+
     .widgets {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      gap: 20px;
+      gap: 25px;
       padding: 20px;
       box-sizing: border-box;
     }
+
     .card {
       background: #151924;
       border: 1px solid #242a36;
@@ -41,7 +43,35 @@
       padding: 10px;
       width: 90%;
       max-width: 1200px;
-      min-height: 400px;
+    }
+
+    /* ticker area slimmed down */
+    .ticker-card {
+      padding: 0;
+      border: none;
+      background: transparent;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* two-column layout for bottom widgets */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .two-column .card {
+      width: 100%;
+      height: 650px;
+    }
+
+    @media (max-width: 900px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -53,58 +83,36 @@
   <div class="widgets">
 
     <!-- ======= TradingView Ticker Tape ======= -->
-    <div class="card" style="padding:0;">
+    <div class="ticker-card">
       <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container" style="height:auto;">
         <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright">
-          <a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">
-            <span class="blue-text">Ticker tape</span>
-          </a>
-          <span class="trademark"> by TradingView</span>
-        </div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
         {
           "symbols": [
             {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index"},
             {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-            {"proName": "NASDAQ:AAPL", "title": ""},
-            {"proName": "NASDAQ:TSLA", "title": ""},
-            {"proName": "NASDAQ:AMD", "title": ""},
-            {"proName": "NASDAQ:NVDA", "title": ""},
-            {"proName": "NASDAQ:AMZN", "title": ""},
-            {"proName": "NASDAQ:META", "title": ""},
-            {"proName": "NASDAQ:MSFT", "title": ""},
-            {"proName": "NASDAQ:NFLX", "title": ""},
-            {"proName": "NASDAQ:GOOGL", "title": ""},
-            {"proName": "NASDAQ:PYPL", "title": ""},
-            {"proName": "NYSE:BABA", "title": ""},
-            {"proName": "NYSE:TSM", "title": ""},
-            {"proName": "NYSE:NKE", "title": ""},
-            {"proName": "NYSE:TGT", "title": ""},
-            {"proName": "NYSE:MGM", "title": ""},
-            {"proName": "FRED:UNRATE", "title": ""},
-            {"proName": "FRED:UNEMPLOY", "title": ""},
-            {"proName": "TVC:USOIL", "title": ""},
-            {"proName": "TVC:UKOIL", "title": ""},
-            {"proName": "TVC:GOLD", "title": ""},
-            {"proName": "TVC:SILVER", "title": ""},
-            {"proName": "NASDAQ:AMZN", "title": ""},
-            {"proName": "NYSE:DIS", "title": ""},
-            {"proName": "NYSE:NKE", "title": ""},
-            {"proName": "NYSE:KO", "title": ""},
-            {"proName": "NYSE:MCD", "title": ""},
-            {"proName": "NASDAQ:SBUX", "title": ""},
-            {"proName": "NYSE:SPOT", "title": ""},
-            {"proName": "NYSE:UBER", "title": ""},
-            {"proName": "NYSE:LYV", "title": ""},
-            {"proName": "NYSE:MANU", "title": ""},
-            {"proName": "NASDAQ:NDAQ", "title": ""},
-            {"proName": "TVC:DJI", "title": ""}
+            {"proName": "NASDAQ:AAPL", "title": "Apple"},
+            {"proName": "NASDAQ:TSLA", "title": "Tesla"},
+            {"proName": "NASDAQ:AMD", "title": "AMD"},
+            {"proName": "NASDAQ:NVDA", "title": "NVIDIA"},
+            {"proName": "NASDAQ:AMZN", "title": "Amazon"},
+            {"proName": "NASDAQ:META", "title": "Meta"},
+            {"proName": "NASDAQ:MSFT", "title": "Microsoft"},
+            {"proName": "NASDAQ:NFLX", "title": "Netflix"},
+            {"proName": "NYSE:NKE", "title": "Nike"},
+            {"proName": "NYSE:DIS", "title": "Disney"},
+            {"proName": "NYSE:KO", "title": "Coca-Cola"},
+            {"proName": "NYSE:MCD", "title": "McDonald's"},
+            {"proName": "NASDAQ:SBUX", "title": "Starbucks"},
+            {"proName": "NYSE:UBER", "title": "Uber"},
+            {"proName": "TVC:USOIL", "title": "Crude Oil"},
+            {"proName": "TVC:GOLD", "title": "Gold"},
+            {"proName": "TVC:SILVER", "title": "Silver"},
+            {"proName": "TVC:DJI", "title": "Dow Jones"}
           ],
           "colorTheme": "dark",
           "locale": "en",
-          "largeChartUrl": "",
           "isTransparent": false,
           "showSymbolLogo": true,
           "displayMode": "adaptive"
@@ -116,15 +124,8 @@
 
     <!-- ======= Stock Heatmap ======= -->
     <div class="card" style="height: 700px;">
-      <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container" style="height:100%; width:100%;">
         <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright">
-          <a href="https://www.tradingview.com/heatmap/stock/" rel="noopener nofollow" target="_blank">
-            <span class="blue-text">Stock Heatmap</span>
-          </a>
-          <span class="trademark"> by TradingView</span>
-        </div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
         {
           "dataSource": "SPX500",
@@ -132,9 +133,7 @@
           "blockColor": "Perf.3M",
           "grouping": "sector",
           "locale": "en",
-          "symbolUrl": "",
           "colorTheme": "dark",
-          "exchanges": [],
           "hasTopBar": true,
           "isDataSetEnabled": true,
           "isZoomEnabled": true,
@@ -145,60 +144,48 @@
         }
         </script>
       </div>
-      <!-- TradingView Widget END -->
     </div>
 
-    <!-- ======= Crypto Markets ======= -->
-    <div class="card" style="height: 650px;">
-      <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright">
-          <a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener nofollow" target="_blank">
-            <span class="blue-text">Crypto markets</span>
-          </a>
-          <span class="trademark"> by TradingView</span>
-        </div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-        {
-          "defaultColumn": "overview",
-          "screener_type": "crypto_mkt",
-          "displayCurrency": "USD",
-          "colorTheme": "dark",
-          "isTransparent": false,
-          "locale": "en",
-          "width": "100%",
-          "height": 550
-        }
-        </script>
-      </div>
-      <!-- TradingView Widget END -->
-    </div>
+    <!-- ======= Two-column section: Crypto + Top Stories ======= -->
+    <div class="two-column">
 
-    <!-- ======= Top Stories ======= -->
-    <div class="card" style="height: 650px;">
-      <!-- TradingView Widget BEGIN -->
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright">
-          <a href="https://www.tradingview.com/news/top-providers/tradingview/" rel="noopener nofollow" target="_blank">
-            <span class="blue-text">Top stories</span>
-          </a>
-          <span class="trademark"> by TradingView</span>
+      <!-- Crypto Markets -->
+      <div class="card">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+          {
+            "defaultColumn": "overview",
+            "screener_type": "crypto_mkt",
+            "displayCurrency": "USD",
+            "colorTheme": "dark",
+            "isTransparent": false,
+            "locale": "en",
+            "width": "100%",
+            "height": 550
+          }
+          </script>
         </div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-        {
-          "displayMode": "adaptive",
-          "feedMode": "all_symbols",
-          "colorTheme": "dark",
-          "isTransparent": false,
-          "locale": "en",
-          "width": "100%",
-          "height": 550
-        }
-        </script>
       </div>
-      <!-- TradingView Widget END -->
+
+      <!-- Top Stories -->
+      <div class="card">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+          {
+            "displayMode": "adaptive",
+            "feedMode": "all_symbols",
+            "colorTheme": "dark",
+            "isTransparent": false,
+            "locale": "en",
+            "width": "100%",
+            "height": 550
+          }
+          </script>
+        </div>
+      </div>
+
     </div>
 
   </div> <!-- end widgets -->
