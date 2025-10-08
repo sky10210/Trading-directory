@@ -39,7 +39,7 @@
       box-sizing: border-box;
     }
 
-    /* === Enlarged ticker === */
+    /* Enlarged ticker */
     .ticker-card {
       padding: 0;
       border: none;
@@ -52,7 +52,7 @@
       margin-bottom: 60px;
     }
 
-    /* two-column layout for Weather + News */
+    /* two-column layout */
     .two-column {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -68,9 +68,11 @@
       padding: 10px;
       width: 100%;
       height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Make Top Stories larger and easier to read */
     .news-card {
       font-size: 22px !important;
       line-height: 1.6;
@@ -97,7 +99,7 @@
 
   <div class="widgets">
 
-    <!-- ======= Enlarged TradingView Ticker ======= -->
+    <!-- ======= Enlarged Ticker ======= -->
     <div class="ticker-card">
       <div class="tradingview-widget-container" style="height:auto;">
         <div class="tradingview-widget-container__widget"></div>
@@ -136,10 +138,10 @@
     <div class="two-column">
 
       <!-- Weather Widget -->
-      <div class="card" style="display:flex;justify-content:center;align-items:center;">
+      <div class="card">
         <a class="weatherwidget-io"
-           href="https://forecast7.com/en/40d71n74d01/new-york/?unit=us"
-           data-label_1="Chambersburg"
+           href="https://forecast7.com/en/39d94n77d66/chambersburg/?unit=us"
+           data-label_1="CHAMBERSBURG"
            data-label_2="WEATHER"
            data-font="Verdana"
            data-icons="Climacons Animated"
@@ -147,20 +149,9 @@
            data-theme="original">
            Chambersburg WEATHER
         </a>
-        <script>
-        !function(d,s,id){
-          var js,fjs=d.getElementsByTagName(s)[0];
-          if(!d.getElementById(id)){
-            js=d.createElement(s);
-            js.id=id;
-            js.src='https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js,fjs);
-          }
-        }(document,'script','weatherwidget-io-js');
-        </script>
       </div>
 
-      <!-- Top Stories Widget -->
+      <!-- Top Stories -->
       <div class="card news-card">
         <div class="tradingview-widget-container" style="height:100%; width:100%;">
           <div class="tradingview-widget-container__widget"></div>
@@ -181,5 +172,18 @@
     </div>
 
   </div>
+
+  <!-- Load weather widget LAST -->
+  <script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){
+      js=d.createElement(s);
+      js.id=id;
+      js.src='https://weatherwidget.io/js/widget.min.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,'script','weatherwidget-io-js');
+  </script>
 </body>
 </html>
