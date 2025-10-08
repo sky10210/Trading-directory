@@ -46,16 +46,16 @@
       background: transparent;
       width: 100%;
       max-width: 1600px;
-      transform: scale(1.6); /* makes it larger */
+      transform: scale(1.6);
       transform-origin: top center;
       margin-top: 25px;
-      margin-bottom: 60px; /* spacing after ticker */
+      margin-bottom: 60px;
     }
 
-    /* two-column layout */
+    /* two-column layout for Weather + News */
     .two-column {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 2fr;
       gap: 20px;
       width: 90%;
       max-width: 1400px;
@@ -68,6 +68,12 @@
       padding: 10px;
       width: 100%;
       height: 700px;
+    }
+
+    /* Make Top Stories larger and easier to read */
+    .news-card {
+      font-size: 22px !important;
+      line-height: 1.6;
     }
 
     @media (max-width: 900px) {
@@ -91,7 +97,7 @@
 
   <div class="widgets">
 
-    <!-- ======= TradingView Ticker Tape (Enlarged) ======= -->
+    <!-- ======= Enlarged TradingView Ticker ======= -->
     <div class="ticker-card">
       <div class="tradingview-widget-container" style="height:auto;">
         <div class="tradingview-widget-container__widget"></div>
@@ -126,35 +132,36 @@
       </div>
     </div>
 
-    <!-- ======= Two-column layout: Heatmap (Left) + Top Stories (Right) ======= -->
+    <!-- ======= Two-column: Weather + Top Stories ======= -->
     <div class="two-column">
 
-      <!-- Stock Heatmap -->
-      <div class="card">
-        <div class="tradingview-widget-container" style="height:100%; width:100%;">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-          {
-            "dataSource": "SPX500",
-            "blockSize": "market_cap_basic",
-            "blockColor": "Perf.3M",
-            "grouping": "sector",
-            "locale": "en",
-            "colorTheme": "dark",
-            "hasTopBar": true,
-            "isDataSetEnabled": true,
-            "isZoomEnabled": true,
-            "hasSymbolTooltip": true,
-            "isMonoSize": false,
-            "width": "100%",
-            "height": "100%"
+      <!-- Weather Widget -->
+      <div class="card" style="display:flex;justify-content:center;align-items:center;">
+        <a class="weatherwidget-io"
+           href="https://forecast7.com/en/40d71n74d01/new-york/?unit=us"
+           data-label_1="Chambersburg"
+           data-label_2="WEATHER"
+           data-font="Verdana"
+           data-icons="Climacons Animated"
+           data-days="5"
+           data-theme="original">
+           Chambersburg WEATHER
+        </a>
+        <script>
+        !function(d,s,id){
+          var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src='https://weatherwidget.io/js/widget.min.js';
+            fjs.parentNode.insertBefore(js,fjs);
           }
-          </script>
-        </div>
+        }(document,'script','weatherwidget-io-js');
+        </script>
       </div>
 
-      <!-- Top Stories -->
-      <div class="card">
+      <!-- Top Stories Widget -->
+      <div class="card news-card">
         <div class="tradingview-widget-container" style="height:100%; width:100%;">
           <div class="tradingview-widget-container__widget"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
