@@ -23,9 +23,10 @@
     }
 
     h1 {
-      font-size: 20px;
+      font-size: 22px;
       margin: 0;
       color: #dfe6f1;
+      letter-spacing: 0.5px;
     }
 
     .widgets {
@@ -38,20 +39,26 @@
       box-sizing: border-box;
     }
 
+    /* === Enlarged ticker === */
     .ticker-card {
       padding: 0;
       border: none;
       background: transparent;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1600px;
+      transform: scale(1.6); /* makes it larger */
+      transform-origin: top center;
+      margin-top: 25px;
+      margin-bottom: 60px; /* spacing after ticker */
     }
 
+    /* two-column layout */
     .two-column {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 20px;
       width: 90%;
-      max-width: 1200px;
+      max-width: 1400px;
     }
 
     .card {
@@ -64,6 +71,10 @@
     }
 
     @media (max-width: 900px) {
+      .ticker-card {
+        transform: scale(1.1);
+        margin-bottom: 20px;
+      }
       .two-column {
         grid-template-columns: 1fr;
       }
@@ -80,9 +91,8 @@
 
   <div class="widgets">
 
-    <!-- ======= TradingView Ticker Tape ======= -->
+    <!-- ======= TradingView Ticker Tape (Enlarged) ======= -->
     <div class="ticker-card">
-      <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container" style="height:auto;">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -114,7 +124,6 @@
         }
         </script>
       </div>
-      <!-- TradingView Widget END -->
     </div>
 
     <!-- ======= Two-column layout: Heatmap (Left) + Top Stories (Right) ======= -->
@@ -164,6 +173,6 @@
 
     </div>
 
-  </div> <!-- end widgets -->
+  </div>
 </body>
 </html>
